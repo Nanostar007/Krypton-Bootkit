@@ -1,4 +1,6 @@
-## Krypton Bootkit 🔒💾
+## Krypton Bootkit 🔒💾 <img width="512" height="512" alt="snake" src="https://github.com/user-attachments/assets/14bacebd-688a-4b5f-bb62-4567770c6ba6" />
+<img width="512" height="512" alt="snake" src="https://github.com/user-attachments/assets/14bacebd-688a-4b5f-bb62-4567770c6ba6" />
+
 
 ![Krypton](https://img.shields.io/badge/Krypton-Bootkit-red?style=for-the-badge&logo=github&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -10,6 +12,17 @@
 
 ## 🚨 Authorization Notice
 This tool is developed for authorized penetration testing only. The author has explicit written permission to test target systems. 
+
+## Features 
+
+| Capability | Status | Description |
+|------------|--------|-------------|
+| **MBR Infection** | ✅ | Overwrites Master Boot Record with custom payload |
+| **BIOS Persistence** | ✅ | Survives OS reinstalls, displays "HACKED BY JASON" |
+| **Auto-Restart** | ✅ | Forces reboot 3s after infection |
+| **BSoD Trigger** | ✅ | Instant Blue Screen of Death |
+| **Admin Detection** | ✅ | Validates Administrator privileges |
+| **Static Linking** | ✅ | 15KB standalone EXE, no dependencies |
 
 ## Breaking the code down 🪛
 ```
@@ -28,8 +41,8 @@ unsigned char hacked_mbr[MBR_SIZE] = {
     0x55, 0xAA                                  // Boot signature (REQUIRED)
 };
 ```
-🔧 Core Functions Dissected
 
+## 🔧 Core Functions Dissected
 
 Function	Purpose	WinAPI Calls	Error Handling
 
@@ -44,8 +57,6 @@ TriggerBSOD()	Crash system	*(int*)0xDEADBEEF = 0x1337BEEF	Stack overflow
 AutoRestart()	Force reboot	ExitWindowsEx(EWX_FORCE | EWX_REBOOT)	AdjustTokenPrivileges()
 
 # 📊 Execution Flow
-mermaid
-
 
 ```
 graph TD
@@ -62,6 +73,7 @@ graph TD
     J --> K[ExitWindowsEx(FORCE_REBOOT)]
     K --> L[BIOS: "HACKED BY JASON!!"]
 ```
+
 🎯 Defensive Bypass Analysis
 
 ```
@@ -79,9 +91,9 @@ if (hDrive == INVALID_HANDLE_VALUE) {
 // - Dynamic API resolution
 // - Small 15KB size
 // - No network calls
-⚙️ Cross-Compilation Magic
-bash
 ```
+
+# ⚙️ Cross-Compilation Magic
 
 
 # MinGW Magic Flags Explained
@@ -90,16 +102,17 @@ bash
 -static             # Link ALL statically
 -s                  # Strip symbols (AV evasion)
 -O2                 # Optimize (-Os for smallest)
-🛡️ Error Codes Reference
 
+# 🛡️ Error Codes Reference
 
 Error	Code	Cause	Mitigation
 5	ERROR_ACCESS_DENIED	No admin	Run as Administrator
 32	ERROR_SHARING_VIOLATION	BitLocker/disk filter	Suspend BitLocker
 87	ERROR_INVALID_PARAMETER	Wrong drive	Use PhysicalDrive0
 2	ERROR_FILE_NOT_FOUND	Drive offline	Check disk status
-🔬 Memory Layout (Runtime)
 
+
+# 🔬 Memory Layout (Runtime)
 
 ```
 krypton.exe (15KB)
@@ -111,18 +124,8 @@ krypton.exe (15KB)
 ```
 
 
-## Features
 
-| Capability | Status | Description |
-|------------|--------|-------------|
-| **MBR Infection** | ✅ | Overwrites Master Boot Record with custom payload |
-| **BIOS Persistence** | ✅ | Survives OS reinstalls, displays "HACKED BY JASON" |
-| **Auto-Restart** | ✅ | Forces reboot 3s after infection |
-| **BSoD Trigger** | ✅ | Instant Blue Screen of Death |
-| **Admin Detection** | ✅ | Validates Administrator privileges |
-| **Static Linking** | ✅ | 15KB standalone EXE, no dependencies |
-
-## Attack Chain
+# Attack Chain
 krypton.exe (Admin) → MBR Overwritten
 [Optional] → BSoD Trigger
 3s Delay → Forced Restart
