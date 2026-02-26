@@ -1,7 +1,7 @@
 ## Krypton Bootkit 🔒💾 
 
+<img width="167" height="150" alt="image" src="https://github.com/user-attachments/assets/bd66d0b6-ca67-433d-9963-99f0a611277e" />
 
-<img width="100" height="100" alt="snake" src="https://github.com/user-attachments/assets/14bacebd-688a-4b5f-bb62-4567770c6ba6" />
 
 ![Krypton](https://img.shields.io/badge/Krypton-Bootkit-red?style=for-the-badge&logo=github&logoColor=white)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
